@@ -10,8 +10,8 @@ phases:
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 860061945305.dkr.ecr.us-east-1.amazonaws.com
 #aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
     #- TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-    - IMAGE_NAME=packaging777:latest
-    - IMAGE_URI=860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
+    - IMAGE_NAME=packaging-delivery-service-777:latest
+    - IMAGE_URI=860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777:latest
     - CONTAINER_NAME=packaging-delivery-service-777
   build:
     commands:
