@@ -18,15 +18,15 @@ phases:
     - echo Build started on `date`
     - echo $IMAGE_NAME
     - mvn clean package -Ddockerfile.skip
-    - docker build -t packaging777 .
+    - docker build -t packaging-delivery-service-777 .
   post_build:
     commands:
     - printenv
     - echo Build completed on `date`
     - echo $(docker images)
-    - docker tag packaging777:latest 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
+    - docker tag packaging-delivery-service-777:latest 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777:latest
     - echo Pushing docker image
-    - docker push 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
+    - docker push 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777:latest
     - echo push completed
     - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $IMAGE_URI > imagedefinitions.json
 artifacts:
