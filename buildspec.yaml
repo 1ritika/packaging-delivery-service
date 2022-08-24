@@ -10,23 +10,23 @@ phases:
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 860061945305.dkr.ecr.us-east-1.amazonaws.com
 #aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
     #- TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-    - IMAGE_NAME=packaging-deliver-service-777
-    - IMAGE_URI=860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777
+    - IMAGE_NAME=packaging777:latest
+    - IMAGE_URI=860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
     - CONTAINER_NAME=packaging-delivery-service-777
   build:
     commands:
     - echo Build started on `date`
     - echo $IMAGE_NAME
     - mvn clean package -Ddockerfile.skip
-    - docker build -t packaging-delivery-service-777 .
+    - docker build -t packaging777 .
   post_build:
     commands:
     - printenv
     - echo Build completed on `date`
     - echo $(docker images)
-    - docker tag packaging-delivery-service-777:latest 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777:latest
+    - docker tag packaging777:latest 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
     - echo Pushing docker image
-    - docker push 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging-delivery-service-777:latest
+    - docker push 860061945305.dkr.ecr.us-east-1.amazonaws.com/packaging777:latest
     - echo push completed
     - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $IMAGE_URI > imagedefinitions.json
 artifacts:
