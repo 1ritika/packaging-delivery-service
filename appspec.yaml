@@ -3,8 +3,8 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:860061945305:task-definition/auth-service-777-task-definition:latest"
+        TaskDefinition: "arn:aws:ecs:us-east-1:860061945305:task-definition/packaging-delivery-service-777-task-definition:latest"
         LoadBalancerInfo:
-          ContainerName: "packagin-delivery-service-777"
+          ContainerName: "packaging-delivery-service-777"
           ContainerPort: "5000"
         PlatformVersion: "LATEST"
